@@ -1,0 +1,29 @@
+{
+	"name": "react-todo-app",
+	"version": "1.0.0",
+	"description": "React todo app with TS and Redux",
+	"main": "index.ts",
+	"scripts": {
+		"build": "webpack -p",
+		"start": "webpack-dev-server -d --content-base ./public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/aldofiore28/react-todo-app.git"
+	},
+	"author": "Aldo Fiore",
+	"license": "MIT",
+	"dependencies": {
+		"react": "^16.12.0",
+		"react-dom": "^16.12.0"
+	},
+	"devDependencies": {
+		"@types/react": "^16.9.17",
+		"@types/react-dom": "^16.9.4",
+		"ts-loader": "^6.2.1",
+		"typescript": "^3.7.3",
+		"webpack": "^4.41.4",
+		"webpack-cli": "^3.3.10",
+		"webpack-dev-server": "^3.10.1"
+	}
+}
