@@ -1,10 +1,12 @@
 import { BooleanAction } from '../utils/redux-utils';
 
-const IS_LOADING = 'IS_LOADING_GENERAL';
+export enum LoadingActions {
+	IS_LOADING = 'IS_LOADING_GENERAL',
+}
 
 export const setIsLoading = (payload: boolean) =>
 	<BooleanAction>{
-		type: IS_LOADING,
+		type: LoadingActions.IS_LOADING,
 		payload,
 	};
 
@@ -15,7 +17,7 @@ export const reducer = (
 	action: BooleanAction
 ) => {
 	switch (action.type) {
-		case IS_LOADING:
+		case LoadingActions.IS_LOADING:
 			return action.payload;
 		default:
 			return state;

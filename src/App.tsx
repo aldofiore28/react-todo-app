@@ -2,9 +2,20 @@ import React from 'react';
 import { State } from './model/types';
 import { connect } from 'react-redux';
 
-const App:React.FunctionComponent = (props) => {
-	console.log(props);
-	return <div>Hello</div>;
+interface AppProps {
+	isLoading: boolean;
+}
+
+const App: React.FunctionComponent<AppProps> = (props: AppProps) => {
+	const {
+		isLoading
+	} = props;
+
+	if (isLoading) {
+		return <div>Loading...</div>;
+	}
+
+	return <div>App working</div>
 };
 
 const mapStateToProps = (state: State) => ({
