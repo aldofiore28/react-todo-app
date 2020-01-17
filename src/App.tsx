@@ -1,21 +1,29 @@
 import React from 'react';
+import Redux from 'redux';
 import { State } from './model/types';
-import { connect } from 'react-redux';
+import { connect, ReactReduxContextValue } from 'react-redux';
 
 interface AppProps {
 	isLoading: boolean;
 }
 
-const App: React.FunctionComponent<AppProps> = (props: AppProps) => {
-	const {
-		isLoading
-	} = props;
-
-	if (isLoading) {
-		return <div>Loading...</div>;
+class App extends React.PureComponent<AppProps> {
+	componentDidMount() {
+		// call action to fetch data
 	}
 
-	return <div>App working</div>
+
+	render () {
+		const {
+			isLoading
+		} = this.props;
+	
+		if (isLoading) {
+			return <div>Loading...</div>;
+		}
+		
+		return <div>App working</div>
+	}
 };
 
 const mapStateToProps = (state: State) => ({
