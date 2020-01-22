@@ -31,7 +31,7 @@ const defaultState: Todo[] = [];
 export const reducer = (state: Todo[] = defaultState, action: TodoAction) => {
 	switch (action.type) {
 		case TodosActions.FETCH_TODOS:
-			return { ...state };
+			return action.payload;
 		case TodosActions.SET_TODOS:
 			return action.payload;
 		case TodosActions.FETCH_TODOS_ERROR:
