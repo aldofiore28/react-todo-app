@@ -1,33 +1,58 @@
 import React from 'react';
-import Redux from 'redux';
-import { State } from './model/types';
-import { connect, ReactReduxContextValue } from 'react-redux';
+import { State, Todo } from './model/types';
+import { connect } from 'react-redux';
+import { getTodos } from './model/todos';
+import { css } from "@emotion/core";
+import { FadeLoader } from 'react-spinners';
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 interface AppProps {
 	isLoading: boolean;
+	todos: Todo[];
 }
 
-class App extends React.PureComponent<AppProps> {
+interface AppDispatches {
+	getTodos(): Promise<void>;
+}
+
+type CombinedProps = AppProps & AppDispatches;
+
+class App extends React.PureComponent<CombinedProps> {
 	componentDidMount() {
-		// call action to fetch data
+		this.props.getTodos();
 	}
 
+	render() {
+		const { isLoading } = this.props;
 
-	render () {
-		const {
-			isLoading
-		} = this.props;
-	
+		console.log(this.props);
+
 		if (isLoading) {
-			return <div>Loading...</div>;
+			return <FadeLoader
+				css={override}
+				color={'#123abc'}
+				loading={isLoading}
+			/>;
 		}
-		
-		return <div>App working</div>
+
+		return <div>App working</div>;
 	}
-};
+}
 
 const mapStateToProps = (state: State) => ({
 	isLoading: state.isLoading,
+	todos: state.todos,
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+	getTodos() {
+		dispatch(getTodos());
+	},
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
