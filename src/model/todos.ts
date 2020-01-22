@@ -47,6 +47,6 @@ export const getTodos = () => async dispatch => {
 		dispatch(setIsLoading(false));
 		dispatch(setTodos(todos));
 	} catch (error) {
-		dispatch(fetchTodosError(error.meessage));
+		dispatch(fetchTodosError(error.message));
 	}
 };
