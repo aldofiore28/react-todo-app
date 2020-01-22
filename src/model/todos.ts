@@ -11,8 +11,9 @@ export enum TodosActions {
 	FETCH_TODOS_ERROR = 'FETCH_TODO',
 }
 
-export const fetchTodos = (): TodoAction => ({
+export const fetchTodos = (payload: Todo[] = []): TodoAction => ({
 	type: TodosActions.FETCH_TODOS,
+	payload,
 });
 
 export const setTodos = (payload: Todo[]): TodoAction => ({
